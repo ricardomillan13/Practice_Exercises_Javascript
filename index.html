@@ -1,15 +1,167 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JS Exercises Dashboard</title>
+
+<style>
+  /* Reset y tipografía */
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f0f2f5;
+    color: #333;
+  }
+
+  header {
+    background: #4b79a1;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  }
+
+  header h1 {
+    margin: 0;
+    font-size: 2em;
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 30px auto;
+    padding: 0 20px;
+  }
+
+  .exercises {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+  }
+
+  .card {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  }
+
+  .card button {
+    margin-top: 15px;
+    padding: 10px;
+    border: none;
+    background: #4b79a1;
+    color: white;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+
+  .card button:hover {
+    background: #3a5f7c;
+  }
+
+  #output {
+    margin-top: 40px;
+    background: #1e1e1e;
+    color: #d4d4d4;
+    border-radius: 10px;
+    padding: 20px;
+    font-family: 'Courier New', monospace;
+    white-space: pre-wrap;
+    max-height: 300px;
+    overflow-y: auto;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  }
+
+  pre {
+    margin: 0;
+  }
+
+  .output-title {
+    color: #ffcc00;
+    margin-bottom: 10px;
+  }
+
+</style>
 </head>
 <body>
-    <h1>Ricardo Millán</h1>
-    <h2>Banda</h2>
-    <h3>Milanesa de Pollo</h3>
-    <h4>Toy Story</h4>
-    <h5>Munay</h5>
+
+<header>
+  <h1>JavaScript Exercises Dashboard</h1>
+</header>
+
+<div class="container">
+
+  <div class="exercises">
+    <div class="card">
+      <h3>Exercise 1</h3>
+      <button onclick="exercise1()">Run</button>
+    </div>
+    <div class="card">
+      <h3>Exercise 2</h3>
+      <button onclick="exercise2()">Run</button>
+    </div>
+    <div class="card">
+      <h3>Exercise 3</h3>
+      <button onclick="exercise3()">Run</button>
+    </div>
+    <div class="card">
+      <h3>Exercise 4</h3>
+      <button onclick="exercise4()">Run</button>
+    </div>
+    <div class="card">
+      <h3>Exercise 5</h3>
+      <button onclick="exercise5()">Run</button>
+    </div>
+    <div class="card">
+      <h3>Exercise 6</h3>
+      <button onclick="exercise6()">Run</button>
+    </div>
+  </div>
+
+  <div id="output">
+    <div class="output-title">Result:</div>
+    <div id="output-content">Click any exercise to see the code and output here.</div>
+  </div>
+
+</div>
+
+<!-- Scripts -->
+<script src="js/exercise1.js"></script>
+<script src="js/exercise2.js"></script>
+<script src="js/exercise3.js"></script>
+<script src="js/exercise4.js"></script>
+<script src="js/exercise5.js"></script>
+<script src="js/exercise6.js"></script>
+
+<script>
+const output = document.getElementById('output-content');
+
+function showResult(exerciseFunc) {
+  const { code, output: result } = exerciseFunc(true);
+  output.innerHTML = `<pre><strong>Code:</strong>\n${code}</pre>
+                      <pre><strong>Output:</strong>\n${result}</pre>`;
+}
+
+// Ejecutores
+function exercise1() { showResult(printOutString); }
+function exercise2() { showResult(() => doubleArray([1,2,4,5], true)); }
+function exercise3() { showResult(() => sumAndProduct([1,2,3,4], true)); }
+function exercise4() { showResult(findCommonCourses); }
+function exercise5() { showResult(runPeopleExercise); }
+function exercise6() { showResult(() => bubbleSort([3,6,12,5,100,1], true)); }
+</script>
+
 </body>
 </html>
